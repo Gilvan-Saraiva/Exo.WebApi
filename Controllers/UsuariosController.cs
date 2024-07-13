@@ -24,12 +24,12 @@ namespace Exo.WebApi.Controllers{
             return Ok(_usuarioRepository.Listar());
         }
 
-        // [HttpPost]
+       //  [HttpPost]
 
         // public IActionResult Cadastrar(Usuario usuario){
-        //     _usuarioRepository.Cadastrar(usuario);
-        //     return StatusCode(201);
-        // }
+         //    _usuarioRepository.Cadastrar(usuario);
+          //  return StatusCode(201);
+       //  }
 
         public IActionResult Post(Usuario usuario){
             Usuario usuarioBuscado = _usuarioRepository.Login(usuario.Email, usuario.Senha);
@@ -42,8 +42,7 @@ namespace Exo.WebApi.Controllers{
                 new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.Id.ToString()),
             
             };
-            var key = new
-            SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("exoapi-chave-autenticacao"));
+            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("exoapi-chave-autenticacao"));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
